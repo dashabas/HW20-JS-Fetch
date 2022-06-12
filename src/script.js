@@ -32,9 +32,11 @@ function renderGallery(photos) {
 getAlbums()
     .then((albums) => renderAlbums(albums))
     .then(() => getPhotos(1)
-        .then((photos) => renderGallery(photos)));
+        .then((photos) => renderGallery(photos)))
+    .catch((error) => console.log(error));
 
 listAlbums.addEventListener('click', (event) => {
     getPhotos(event.target.dataset.id)
-        .then((photos) => renderGallery(photos));
+        .then((photos) => renderGallery(photos))
+        .catch((error) => console.log(error));
 });
